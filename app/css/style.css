@@ -1,0 +1,42 @@
+/* ====== FONTS ================== */
+@font-face {
+    font-family: "Inconsolata-Regular";
+    src: url("../fonts/Inconsolata-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Inter-Regular";
+    src: url("../fonts/Inter-Regular.ttf");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Inter-SemiBold";
+    src: url("../fonts/Inter-SemiBold.ttf");
+    font-weight: 600;
+}
+
+/* ====== COMMON ================== */
+body {font-family: "Inter-Regular"; font-weight: 400;}
+p {margin: 0;}
+
+/* ====== SPECIFIC ================== */
+.navbar {margin-bottom: 24px;}
+.navbar .navbar-brand {margin: 0; font-family: "Inter-SemiBold"; font-weight: 600;}
+
+.row {margin-bottom: 24px;}
+.row:last-of-type {margin-bottom: 48px;}
+.row h2 {margin: 0 0 8px 0; font-size: 1.25rem; letter-spacing: -0.05rem;}
+
+.row-sync-direction .btn-group {width: 100%;}
+.row-sync-direction .btn-group .buttontext {line-height: 1.35rem;}
+
+.row-sync-selection .list .list-control .stats {display: flex; flex-direction: column; align-items: flex-end; justify-content: center;}
+.row-sync-selection .list .list-group .stats {line-height: 1.35rem;}
+
+.row-terminal .terminal {display: flex; flex-direction: column-reverse; width: 100%; height: 256px; padding: 1rem; background-color: #171421; color: #FFF; border-radius: 0.25rem; font-family: "Inconsolata-Regular"; font-weight: 400; line-height: 1.35rem; overflow-y: scroll;}
+.row-terminal .terminal p {margin: 0;}
+
+footer.navbar {bottom: 0; width: 100%; margin-bottom: 0; background-color: #e9ecef; border-top: 1px solid #ced4da;}
+footer.navbar .eerolink {color: #0d6efd; text-decoration: underline; cursor: pointer;}
+
+.modal .alert {display: none;}

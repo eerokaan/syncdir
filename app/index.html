@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+        
+        <title>syncdir</title>
+
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-primary">
+            <div class="container">
+                <span class="navbar-brand h1">syncdir</span>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row row-local-remote">
+                <h2>Local and Remote Directory</h2>
+
+                <div class="col-12">
+                    <div class="alert alert-warning" role="alert">
+                        <span></span>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <label for="inputLocal" class="form-label">Local Directory</label>
+                    <div class="input-group">
+                        <span class="input-group-text">L</span>
+                        <input id="inputLocal" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="inputRemote" class="form-label">Remote Directory</label>
+                    <div class="input-group">
+                        <span class="input-group-text">R</span>
+                        <input id="inputRemote" class="form-control" type="text">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-sync-direction">
+                <h2>Sync Direction</h2>
+
+                <div class="col">
+                    <div class="btn-group" role="group">
+                        <input type="radio" class="btn-check" name="syncDirection" id="syncDirectionPush" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="syncDirectionPush">
+                            <p class="buttontext">
+                                <span class="fw-bold">Push</span><br>
+                                <span>Local ➔ Remote</span>
+                            </p>
+                        </label>
+
+                        <input type="radio" class="btn-check" name="syncDirection" id="syncDirectionPull" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="syncDirectionPull">
+                            <p class="buttontext">
+                                <span class="fw-bold">Pull</span><br>
+                                <span>Remote ➔ Local</span>
+                            </p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-sync-selection">
+                <h2>Sync Selection</h2>
+
+                <div class="col">
+                    <div class="alert alert-warning" role="alert">
+                        <span></span>
+                    </div>
+
+                    <div class="list">
+                        <div class="list-control d-flex justify-content-between align-items-center">
+                            <div class="buttons">
+                                <button type="button" class="btn btn-primary">Select all</button>
+                                <button type="button" class="btn btn-secondary">Deselect all</button>
+                            </div>
+                            <div class="stats">
+                                <p class="total">
+                                    <span class="description">Total selected Size: </span>
+                                    <span class="badge bg-primary rounded-pill" data-size="0">0 B</span>
+                                </p>
+                                <p class="remaining">
+                                    <span class="description"></span>
+                                    <span class="badge bg-primary rounded-pill" data-size="0">0 B</span>
+                                </p>
+                            </div>
+                        </div>
+    
+                        <hr/>
+    
+                        <div class="list-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-terminal">
+                <h2>Terminal Output</h2>
+
+                <div class="col">
+                    <div class="terminal">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-start-sync">
+                <h2>Start Syncing</h2>
+
+                <div class="col">
+                    <div class="alert alert-primary" role="alert">
+                        <p>The specified selection is going to be copied to the <span class="outputlocation fw-bold"></span>. I understand, that after the file transfer finishes successfully, any existing previous directories with matching names are going to be overwritten.</p>
+                        <br>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="understoodCheckbox">
+                            <label class="form-check-label" for="understoodCheckbox">
+                                <span>I understand</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" disabled>Start Syncing</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="navbar">
+            <div class="container">
+                <span>Made with &#128153; by <span class="eerolink">Eero Kaan</span></span>
+            </div>
+        </footer>
+
+        <div class="modal fade feedback-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-success" role="alert">
+                            <span></span>
+                        </div>
+
+                        <div class="alert alert-danger" role="alert">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/bootstrap.bundle.min.js"></script>
+        <script src="./renderer.js"></script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "name": "syncdir",
+    "version": "1.0.0",
+    "main": "app/main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "devDependencies": {
+        "electron": "^18.0.4",
+        "electron-packager": "^15.4.0"
+    },
+    "dependencies": {
+        "check-disk-space": "^3.3.0",
+        "fast-folder-size": "^1.6.1",
+        "get-folder-size": "^2.0.1",
+        "os": "^0.1.2",
+        "shelljs": "^0.8.5"
+    }
+}
