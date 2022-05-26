@@ -19,8 +19,8 @@ settingsDirectory += "/syncdir"
 // Electron: Window Definition
 function createWindow() {
     mainWindow = new BrowserWindow({
-        width: 800,
-        height: 1200,
+        width: 640,
+        height: 800,
         autoHideMenuBar: true,
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
