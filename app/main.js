@@ -24,7 +24,8 @@ function createWindow() {
         autoHideMenuBar: true,
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
-        }
+        },
+        icon: path.join(__dirname, "img/icon.png") 
     });
     
     mainWindow.loadFile("./app/index.html");

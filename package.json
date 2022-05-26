@@ -1,13 +1,16 @@
 {
     "name": "syncdir",
     "version": "1.0.0",
-    "main": "app/main.js",
+    "author": "Eero Kaan",
+    "homepage": "https://eerokaan.de",
+    "description": "syncdir is an application assisting file transfers of directories across different locations",
+    "main": "./app/main.js",
     "scripts": {
         "start": "electron ."
     },
     "devDependencies": {
         "electron": "^18.0.4",
-        "electron-packager": "^15.4.0"
+        "electron-builder": "^23.0.3"
     },
     "dependencies": {
         "check-disk-space": "^3.3.0",
@@ -15,5 +18,31 @@
         "get-folder-size": "^2.0.1",
         "os": "^0.1.2",
         "shelljs": "^0.8.5"
+    },
+    "build": {
+        "appId": "de.eerokaan.syncdir",
+        "asar": false,
+        "linux": {
+            "target": [
+                {
+                    "target": "AppImage",
+                    "arch": [
+                        "x64",
+                        "armv7l",
+                        "arm64"
+                    ]
+                }
+            ]
+        },
+        "win": {
+            "target": [
+                {
+                    "target": "portable",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ]
+        }
     }
 }
