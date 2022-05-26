@@ -11,6 +11,9 @@ const checkDiskSpace = require("check-disk-space").default;
 
 var mainWindow;
 
+var settingsDirectory = process.env.APPDATA || (process.platform == "darwin" ? process.env.HOME + "/Library/Preferences" : process.env.HOME + "/.local/share");
+settingsDirectory += "/syncdir"
+
 // ====== ELECTRON ========================================================
 
 // Electron: Window Definition
@@ -180,7 +183,7 @@ function startSyncProcess(syncJob) {
 
         // Generate Script depending on OS
         if (os.platform() == "win32") {
-            pathScript = path.join(__dirname, "../run/syncProcess.bat");
+            pathScript = path.join(settingsDirectory, "/syncProcess.bat");
 
             for (var counter = 0; counter < syncJob.syncSelection.length; counter++) {
                 if (syncJob.syncDirection == "push") {
@@ -200,7 +203,7 @@ function startSyncProcess(syncJob) {
             }
         }
         else if (os.platform() == "linux") {
-            pathScript = path.join(__dirname, "../run/syncProcess.sh");
+            pathScript = path.join(settingsDirectory, "/syncProcess.sh");
             scriptBody += "#!/bin/bash" + "\n";
             
             for (var counter = 0; counter < syncJob.syncSelection.length; counter++) {
@@ -259,7 +262,7 @@ function startFooterLink() {
 function settingsSave(dataObject) {
 
     // Inits
-    var settingsFile = path.join(__dirname, "../run/settings.json");
+    var settingsFile = path.join(settingsDirectory, "/settings.json");
     var settingsObjectJson = null;
 
     var settingsObject = {
@@ -294,7 +297,7 @@ function settingsSave(dataObject) {
 function settingsLoad() {
     
     // Inits
-    var settingsFile = path.join(__dirname, "../run/settings.json");
+    var settingsFile = path.join(settingsDirectory, "/settings.json");
     var settingsObjectJson = null;
 
     var settingsObject = {
@@ -302,6 +305,11 @@ function settingsLoad() {
         remote: "",
         direction: ""
     };
+
+    // Make sure that syncdir settings directory even exists
+    if (!fs.existsSync(settingsDirectory)) {
+        fs.mkdirSync(settingsDirectory, {recursive: true});
+    }
 
     // Load Settings from Filesystem if available
     if (fs.existsSync(settingsFile)) {
