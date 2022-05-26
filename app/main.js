@@ -190,14 +190,14 @@ function startSyncProcess(syncJob) {
                 if (syncJob.syncDirection == "push") {
                     var randomString = helperCreateString(6);
 
-                    scriptBody += "robocopy " + syncJob.localDirectory + "\\" + syncJob.syncSelection[counter] + " " + syncJob.remoteDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " /E /ETA" + "\r\n";
+                    scriptBody += "robocopy " + syncJob.localDirectory + "\\" + syncJob.syncSelection[counter] + " " + syncJob.remoteDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " /E /ETA /V /MT:16" + "\r\n";
                     scriptBody += "rd /S /Q " + syncJob.remoteDirectory + "\\" + syncJob.syncSelection[counter] + "\r\n";
                     scriptBody += "move " + syncJob.remoteDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " " + syncJob.remoteDirectory + "\\" + syncJob.syncSelection[counter] + "\r\n";
                 }
                 else if (syncJob.syncDirection == "pull") {
                     var randomString = helperCreateString(6);
 
-                    scriptBody += "robocopy " + syncJob.remoteDirectory + "\\" + syncJob.syncSelection[counter] + " " + syncJob.localDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " /E /ETA" + "\r\n";
+                    scriptBody += "robocopy " + syncJob.remoteDirectory + "\\" + syncJob.syncSelection[counter] + " " + syncJob.localDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " /E /ETA /V /MT:16" + "\r\n";
                     scriptBody += "rd /S /Q " + syncJob.localDirectory + "\\" + syncJob.syncSelection[counter] + "\r\n";
                     scriptBody += "move " + syncJob.localDirectory + "\\" + randomString + syncJob.syncSelection[counter] + " " + syncJob.localDirectory + "\\" + syncJob.syncSelection[counter] + "\r\n";
                 }
